@@ -98,8 +98,13 @@ void BiList::pop_front()
 //The function inserts a new node after the node with the number "index".
 void BiList::insert(int value, size_t index)
 {
-	if (size == 0 || index > size)
+	if ((size == 0 && index==0) || index > size)
 		throw "Incorrect index.";
+	if (index == 0)
+	{
+		this->push_back(value);
+		return;
+	}
 	Node* cursor = head;
 	for (size_t i = 0; i < index; i++)
 		cursor = cursor->next;
@@ -114,10 +119,10 @@ void BiList::insert(int value, size_t index)
 //The function gets the value from the node with the number "index".
 int BiList::at(size_t index)
 {
-	if (index > size || index<=0)
+	if (index > size || index<0)
 		throw "Incorrect index.";
 	Node* cursor = head;
-	for (size_t i = 1; i < index; i++)
+	for (size_t i = 0; i < index; i++)
 		cursor = cursor->next;
 	return cursor->data;
 }
@@ -127,18 +132,18 @@ void BiList::remove(size_t index)
 {
 	if (index > size || index <= 0)
 		throw "Incorrect index.";
-	if (index == 1)
+	if (index == 0)
 	{
 		this->pop_front();
 		return;
 	}
-	if (index == size)
+	if (index == size-1)
 	{
 		this->pop_back();
 		return;
 	}
 	Node* cursor = head;
-	for (size_t i = 0; i < index - 1; i++)
+	for (size_t i = 0; i < index; i++)
 		cursor = cursor->next;
 	Node* temp = cursor;
 	cursor->prev->next = cursor->next;
@@ -192,7 +197,7 @@ void BiList::set(size_t index, int value)
 	if (index > size || index<0)
 		throw"Incorrect index.";
 	Node* cursor = head;
-	for (size_t i = 1; i < index; i++)
+	for (size_t i = 0; i < index; i++)
 		cursor = cursor->next;
 	cursor->data = value;
 }
@@ -221,4 +226,3 @@ void BiList::reverse()
 	}
 	head = temp->prev;
 }
-
