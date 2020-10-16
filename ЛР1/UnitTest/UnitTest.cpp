@@ -37,7 +37,7 @@ namespace UnitTest
 		}
 		TEST_METHOD(at_correct_index)
 		{
-			Assert::AreEqual(NotEmpty.at(2), 2);
+			Assert::AreEqual(NotEmpty.at(2), 3);
 		}
 		TEST_METHOD(at_incorrect_index)
 		{
@@ -53,18 +53,18 @@ namespace UnitTest
 		TEST_METHOD(Push_Back_NotEmpty)
 		{
 			NotEmpty.push_back(5);
-			Assert::AreEqual(NotEmpty.at(4), 5);
+			Assert::AreEqual(NotEmpty.at(3), 5);
 		}
 		TEST_METHOD(Push_Front_NotEmpty)
 		{
 			NotEmpty.push_front(0);
-			Assert::AreEqual(NotEmpty.at(1), 0);
+			Assert::AreEqual(NotEmpty.at(0), 0);
 		}
 		TEST_METHOD(remove_correct_index)
 		{
-			int temp = NotEmpty.at(3);
-			NotEmpty.remove(2);
-			Assert::AreEqual(NotEmpty.at(2), temp);
+			int temp = NotEmpty.at(2);
+			NotEmpty.remove(1);
+			Assert::AreEqual(NotEmpty.at(1), temp);
 		}
 		TEST_METHOD(Pop_Back_for_NotEmpty)
 		{
@@ -86,7 +86,7 @@ namespace UnitTest
 		TEST_METHOD(insert_correct_index)
 		{
 			NotEmpty.insert(4, 1);
-			Assert::AreEqual(NotEmpty.at(2), 4);
+			Assert::AreEqual(NotEmpty.at(1), 4);
 		}
 		TEST_METHOD(insert_incorrect_index)
 		{
@@ -112,9 +112,9 @@ namespace UnitTest
 		}
 		TEST_METHOD(reverse_for_NotEmpty)
 		{
-			int last_inf = NotEmpty.at(NotEmpty.get_size());
+			int last_inf = NotEmpty.at(NotEmpty.get_size()-1);
 			NotEmpty.reverse();
-			Assert::AreEqual(NotEmpty.at(1), last_inf);
+			Assert::AreEqual(NotEmpty.at(0), last_inf);
 		}
 		TEST_METHOD(Pop_Front_for_Empty)
 		{
@@ -152,13 +152,13 @@ namespace UnitTest
 		TEST_METHOD(Push_Back_Empty)
 		{
 			Empty.push_back(5);
-			Assert::AreEqual(Empty.at(1), 5);
+			Assert::AreEqual(Empty.at(0), 5);
 			Empty.pop_back();
 		}
 		TEST_METHOD(Push_Front_Empty)
 		{
 			Empty.push_front(0);
-			Assert::AreEqual(Empty.at(1), 0);
+			Assert::AreEqual(Empty.at(0), 0);
 		}
 	};
 }
