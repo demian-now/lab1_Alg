@@ -105,11 +105,6 @@ void BiList::insert(int value, size_t index)
 		this->push_front(value);
 		return;
 	}
-	if (index == (size-1))
-	{
-		this->push_back(value);
-		return;
-	}
 	Node* cursor = head;
 	for (size_t i = 0; i < index; i++)
 		cursor = cursor->next;
